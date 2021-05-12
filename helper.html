@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <input type="text" id="TLV" name="TLV" size="100"><br><br>
+      <button type="button" value="Submit" onclick="myclick()" >
+         Click here
+         <div id='mylink'></div>
+      </button>
+      <div>
+         <pre>
+	<code>
+		<div id = "table">
+        </tr>
+    </table>
+		</div>
+	</code>
+	</pre>
+      </div>
+   </body>
+</html>
+<script>
+   function myclick(){
+       breakTlv();
+   }
+   
+   function breakTlv(){
+   var qris = document.getElementById("TLV").value;
+   var tags = [];
+   
+   var i = 0;
+   while (i < qris.length) {
+       var tag = qris.substring(i, i + 3);
+       i += 3;
+       var valueLength = Number(qris.substring(i, i + 3));
+       i += 3;
+       var value = qris.substring(i, i + valueLength);
+       i += valueLength;
+       tags.push({tag: tag, length: valueLength, value: value});
+   }
+   document.getElementById("table").innerHTML = JSON.stringify(tags, null, 3)
+   console.log(tags)
+   }
+   
+   
+   
+</script>
