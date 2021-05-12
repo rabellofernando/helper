@@ -10,8 +10,6 @@
          <pre>
 	<code>
 		<div id = "table">
-        </tr>
-    </table>
 		</div>
 	</code>
 	</pre>
@@ -38,6 +36,7 @@
        tags.push({tag: tag, length: valueLength, value: value});
    }
    document.getElementById("table").innerHTML = JSON.stringify(tags, null, 3)
+   
    console.log(tags)
    }
    
