@@ -33,13 +33,26 @@
        i += 3;
        var value = qris.substring(i, i + valueLength);
        i += valueLength;
-       tags.push({tag: tag, length: valueLength, value: value});
+       tags.push({Tag: tag, Length: valueLength, Value: value});
    }
-   document.getElementById("table").innerHTML = JSON.stringify(tags, null, 3)
+   var cols = [];
+   for (var k in tags) {
+	for (var c in tags[k]) {
+		if (cols.indexOf(c)===-1) cols.push(c);
+	}
+   }
+   var html = '<table><tr>'+
+    cols.map(function(c){ return '<th>'+c+'</th>' }).join('')+    '</tr>';
+   for (var l in tags) {
+	html += '<tr>'+
+		cols.map(function(c){ return '<td>'+(tags[l][c]||'')+'</td>' }).join('')+
+		'</tr>';
+   }
+   html += '</table>';
+   document.getElementById("table").innerHTML = html + JSON.stringify(tags, null, 3) 
    
    console.log(tags)
    }
-   
    
    
 </script>
